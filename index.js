@@ -11,7 +11,7 @@ const aspect = w / h;
 const far = 30;
 const near = 0.1;
 const camera = new THREE.PerspectiveCamera(fov, aspect, far, near);
-camera.position.z = 6;
+camera.position.z = 2;
 const scene = new THREE.Scene();
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -47,14 +47,14 @@ const wireMat = new THREE.MeshBasicMaterial({
 const wireMesh = new THREE.Mesh(geo, wireMat);
 wireMesh.scale.setScalar(1.001);
 
-const hemi = new THREE.HemisphereLight(0x0099ff, 0xffffff);
+const hemi = new THREE.HemisphereLight(0x0099ff, 0xD4AF37);
 
 
 const mesh = new THREE.Mesh(geo, mat)
-// mesh.add(wireMesh);
-// scene.add(mesh);
+mesh.add(wireMesh);
+scene.add(mesh);
 scene.add(hemi);
-scene.add(taurMesh);
+// scene.add(taurMesh);
 
 function animate(t = 0) {
     requestAnimationFrame(animate)
